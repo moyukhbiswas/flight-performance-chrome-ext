@@ -9,9 +9,16 @@ chrome.runtime.onMessage.addListener(
 	     
 	    var response = doc.getElementsByClassName('uiComponent300')[0];
 
-	    var imageURL = response.getElementsByTagName('img')[0].getAttribute('src');
-	    response.getElementsByTagName('img')[0].src = "http://www.flightstats.com" + imageURL;
+	    var imageURL;
+	    if (!response) {
+	    	sendResponse({details: 'COULD NOT FETCH DETAILS FOR THIS FLIGHT', success: false});
+	    	return;
+	    }
 
+	    var imageURL = response.getElementsByTagName('img')[0].getAttribute('src');
+	    console.log('img url:'+imageURL);
+	    response.getElementsByTagName('img')[0].src = "http://www.flightstats.com" + imageURL;
+	    console.log('Updated:'+response.getElementsByTagName('img')[0].src);
 	    var unnecessaryHeader = response.childNodes[3].childNodes[1];
 	    response.childNodes[3].removeChild(unnecessaryHeader);
 
@@ -36,7 +43,7 @@ chrome.runtime.onMessage.addListener(
 	    response.getElementsByTagName('h2')[0].remove();
 	    response.getElementsByTagName('hr')[0].remove();
 		response.getElementsByTagName('hr')[0].remove();
-	    sendResponse({details: response.innerHTML});
+	    sendResponse({details: response.innerHTML, success: true});
 	   	}
   	};
 

@@ -98,7 +98,12 @@ var handleFlightNumberClick = function(event) {
 			if (loadingDiv.length !== 0) {
 				event.path[3].removeChild(loadingDiv[0]);
 			}
-			event.path[3].innerHTML += '<div id = "flight-delay-details" class = "flight-details-div">'+response.details+'</div>';
+
+			if (response.success) {
+				event.path[3].innerHTML += '<div id = "flight-delay-details" class = "flight-details-div">'+response.details+'</div>';
+			} else {
+				event.path[3].innerHTML += '<div id = "flight-delay-details" class = "flight-details-div" style = "height: 40px;">'+response.details+'</div>';
+			}
 		});
 	}
 };
