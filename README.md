@@ -3,7 +3,7 @@
 Flight performance lookup us a chrome extension helps you look up flight delays before you book them. Currently this only works with www.makemytrip.com for Indian flights.
 
   - Clone/Download this repository
-  - Go to Chrome-> Settings -> Extensions -> Load Unpacked Extensions
+  - Go to Chrome-> Settings -> Extensions -> Check "Developer Options" -> Load Unpacked Extensions
   - Point it to the root directory of this repository and hit install
   - Go to makemytrip.com and look up a flight
   - Hover over the flight number to see the magic.
