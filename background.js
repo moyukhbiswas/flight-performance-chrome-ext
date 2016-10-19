@@ -38,6 +38,9 @@ chrome.runtime.onMessage.addListener(
 	    panels[1].style.top = "-105px";
 	    panels[1].style.position = "relative";
 
+		if(panels[2]){
+			panels[2].remove();
+		}
 	    //Make the header smaller. since nothing except inline styles work here, well
 
 	    response.getElementsByTagName('h2')[0].remove();
